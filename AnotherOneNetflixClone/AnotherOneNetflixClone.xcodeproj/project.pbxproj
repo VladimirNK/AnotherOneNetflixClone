@@ -22,6 +22,12 @@
 		2DF4A06C2BE24ADD0046F4CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A06B2BE24ADD0046F4CE /* HomeView.swift */; };
 		2DF4A06F2BE24F4C0046F4CE /* FilerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A06E2BE24F4C0046F4CE /* FilerCell.swift */; };
 		2DF4A0712BE2522E0046F4CE /* FilterBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A0702BE2522E0046F4CE /* FilterBarView.swift */; };
+		2DF4A0732BE2641F0046F4CE /* HeroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A0722BE2641F0046F4CE /* HeroCell.swift */; };
+		2DF4A0752BE26F820046F4CE /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A0742BE26F820046F4CE /* MainButton.swift */; };
+		2DF4A0782BE273170046F4CE /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A0772BE273170046F4CE /* Icons.swift */; };
+		2DF4A07A2BE274500046F4CE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A0792BE274500046F4CE /* Layout.swift */; };
+		2DF4A07C2BE275BC0046F4CE /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A07B2BE275BC0046F4CE /* MainButtonStyle.swift */; };
+		2DF4A07F2BE27F310046F4CE /* FrameReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A07E2BE27F310046F4CE /* FrameReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +45,12 @@
 		2DF4A06B2BE24ADD0046F4CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2DF4A06E2BE24F4C0046F4CE /* FilerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilerCell.swift; sourceTree = "<group>"; };
 		2DF4A0702BE2522E0046F4CE /* FilterBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBarView.swift; sourceTree = "<group>"; };
+		2DF4A0722BE2641F0046F4CE /* HeroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCell.swift; sourceTree = "<group>"; };
+		2DF4A0742BE26F820046F4CE /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		2DF4A0772BE273170046F4CE /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		2DF4A0792BE274500046F4CE /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		2DF4A07B2BE275BC0046F4CE /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
+		2DF4A07E2BE27F310046F4CE /* FrameReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +85,7 @@
 		2DF4A0402BE245500046F4CE /* AnotherOneNetflixClone */ = {
 			isa = PBXGroup;
 			children = (
+				2DF4A07D2BE27F230046F4CE /* Helpers */,
 				2DF4A06D2BE24F170046F4CE /* Components */,
 				2DF4A0652BE248070046F4CE /* Extensions */,
 				2DF4A0612BE2472D0046F4CE /* Resources */,
@@ -125,6 +138,8 @@
 			children = (
 				2DF4A0452BE245510046F4CE /* Assets.xcassets */,
 				2DF4A0682BE248DE0046F4CE /* AppColors.swift */,
+				2DF4A0772BE273170046F4CE /* Icons.swift */,
+				2DF4A0792BE274500046F4CE /* Layout.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -148,10 +163,29 @@
 		2DF4A06D2BE24F170046F4CE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2DF4A0762BE272EF0046F4CE /* Buttons */,
 				2DF4A06E2BE24F4C0046F4CE /* FilerCell.swift */,
 				2DF4A0702BE2522E0046F4CE /* FilterBarView.swift */,
+				2DF4A0722BE2641F0046F4CE /* HeroCell.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		2DF4A0762BE272EF0046F4CE /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2DF4A0742BE26F820046F4CE /* MainButton.swift */,
+				2DF4A07B2BE275BC0046F4CE /* MainButtonStyle.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		2DF4A07D2BE27F230046F4CE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2DF4A07E2BE27F310046F4CE /* FrameReader.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +266,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF4A0782BE273170046F4CE /* Icons.swift in Sources */,
 				2DF4A06C2BE24ADD0046F4CE /* HomeView.swift in Sources */,
+				2DF4A07A2BE274500046F4CE /* Layout.swift in Sources */,
 				2DF4A0672BE2484E0046F4CE /* Color+Hex.swift in Sources */,
+				2DF4A07C2BE275BC0046F4CE /* MainButtonStyle.swift in Sources */,
 				2DF4A05B2BE246D60046F4CE /* ImageLoaderView.swift in Sources */,
+				2DF4A0732BE2641F0046F4CE /* HeroCell.swift in Sources */,
+				2DF4A07F2BE27F310046F4CE /* FrameReader.swift in Sources */,
 				2DF4A05C2BE246D60046F4CE /* Product.swift in Sources */,
 				2DF4A05A2BE246D60046F4CE /* DatabaseHelper.swift in Sources */,
 				2DF4A0422BE245500046F4CE /* AnotherOneNetflixCloneApp.swift in Sources */,
@@ -242,6 +281,7 @@
 				2DF4A0712BE2522E0046F4CE /* FilterBarView.swift in Sources */,
 				2DF4A0692BE248DE0046F4CE /* AppColors.swift in Sources */,
 				2DF4A05D2BE246D60046F4CE /* Constants.swift in Sources */,
+				2DF4A0752BE26F820046F4CE /* MainButton.swift in Sources */,
 				2DF4A05E2BE246D60046F4CE /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
