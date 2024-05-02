@@ -10,9 +10,10 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var filters: [FilterModel] = FilterModel.mock
-    @State private var selectedFilter: FilterModel? 
+    @State private var selectedFilter: FilterModel?
     @State private var fullHeaderSize: CGSize = .zero
     @State private var heroProduct: Product?
+    @State private var scrollViewOffset: CGFloat = .zero
     
     @State private var currentUser: User?
     @State private var productRows: [ProductRow] = []
@@ -21,37 +22,12 @@ struct HomeView: View {
         ZStack(alignment: .top) {
             Color.appBlack.ignoresSafeArea()
             
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 8) {
-                    Rectangle()
-                        .opacity(0)
-                        .frame(height: fullHeaderSize.height)
-                    
-                    if let heroProduct {
-                        heroCell(product: heroProduct)
-                    }
-                    
-                    categoryRows
-                }
-            }
+            gradientLayer
             
-            VStack(spacing: 0) {
-                header
-                    .padding(.horizontal, 16)
-                
-                FilterBarView(
-                    filters: filters,
-                    selectedFilter: selectedFilter) { newFiler in
-                        selectedFilter = newFiler
-                    } onXMarkPressed: {
-                        selectedFilter = nil
-                    }
-                    .padding(.top, 16)
-            }
-            .background(Color.blue)
-            .readingFrame { frame in
-                fullHeaderSize = frame.size
-            }
+            scrollViewLayer
+            
+            fullHeaderWithFilters
+            
         }
         .foregroundStyle(.appWhite)
         .task {
@@ -70,7 +46,7 @@ struct HomeView: View {
             var rows: [ProductRow] = []
             let allBrands = Set(products.map { $0.brand })
             for brand in allBrands {
-                rows.append(ProductRow(title: brand.capitalized, products: products))
+                rows.append(ProductRow(title: brand.capitalized, products: products.shuffled()))
             }
             productRows = rows
             
@@ -104,7 +80,7 @@ extension HomeView {
             .font(.title2 )
         }
     }
-     
+    
     private func heroCell(product: Product) -> some View {
         HeroCell(
             imageName: product.firstImage ,
@@ -131,7 +107,7 @@ extension HomeView {
                     Text(row.title)
                         .font(.headline)
                         .padding(.horizontal, 16)
-                     
+                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack {
                             ForEach(Array(row.products.enumerated()), id: \.offset) { (index, product) in
@@ -150,6 +126,96 @@ extension HomeView {
             }
         }
     }
+    
+    private var fullHeaderWithFilters: some View {
+        VStack(spacing: 0) {
+            header
+                .padding(.horizontal, 16)
+            
+            if scrollViewOffset > -20 {
+                FilterBarView(
+                    filters: filters,
+                    selectedFilter: selectedFilter) { newFiler in
+                        selectedFilter = newFiler
+                    } onXMarkPressed: {
+                        selectedFilter = nil
+                    }
+                    .padding(.top, 16)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
+            
+             
+        }
+        .padding(.bottom, 8)
+        .background(
+            ZStack {
+                if scrollViewOffset < -70 {
+                    Rectangle()
+                        .fill(Color.clear)
+                        .background(.ultraThinMaterial)
+                        .brightness(-0.2)
+                        .ignoresSafeArea()
+                }
+            }
+        )
+        .animation(.smooth, value: scrollViewOffset)
+        .readingFrame { frame in
+            if fullHeaderSize == .zero {
+                fullHeaderSize = frame.size
+            }
+            
+        }
+    }
+    
+    
+    private var scrollViewLayer: some View {
+        ScrollViewWithOnScrollChanged(
+            .vertical,
+            showsIndicators: false,
+            content: {
+                VStack(spacing: 8) {
+                    Rectangle()
+                        .opacity(0)
+                        .frame(height: fullHeaderSize.height)
+                    
+                    if let heroProduct {
+                        heroCell(product: heroProduct)
+                    }
+                    
+                    categoryRows
+                }
+            },
+            onScrollChanged: { offset in
+                scrollViewOffset = min(0, offset.y)
+            }
+        )
+    }
+    
+    private var gradientLayer: some View {
+        ZStack {
+            LinearGradient(
+                colors:
+                    [.appDarkGray.opacity(1), .appDarkGray.opacity(0)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            
+            LinearGradient(
+                colors:
+                    [.appDarkRed.opacity(0.5), .appDarkRed .opacity(0)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            
+        }
+        .frame(maxHeight: max(10, (400 + (scrollViewOffset * 0.75))))
+        .opacity(scrollViewOffset < -250 ? 0 : 1)
+        .animation(.easeOut, value: scrollViewOffset)
+    }
+    
+    
 }
 
 #Preview {

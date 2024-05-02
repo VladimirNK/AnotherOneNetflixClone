@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DA2B7D82BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2B7D72BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift */; };
+		2DA2B7DA2BE41A280035C81A /* LocationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2B7D92BE41A280035C81A /* LocationReader.swift */; };
 		2DF4A0422BE245500046F4CE /* AnotherOneNetflixCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A0412BE245500046F4CE /* AnotherOneNetflixCloneApp.swift */; };
 		2DF4A0462BE245510046F4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4A0452BE245510046F4CE /* Assets.xcassets */; };
 		2DF4A0492BE245510046F4CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4A0482BE245510046F4CE /* Preview Assets.xcassets */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DA2B7D72BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithOnScrollChanged.swift; sourceTree = "<group>"; };
+		2DA2B7D92BE41A280035C81A /* LocationReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationReader.swift; sourceTree = "<group>"; };
 		2DF4A03E2BE245500046F4CE /* AnotherOneNetflixClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnotherOneNetflixClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF4A0412BE245500046F4CE /* AnotherOneNetflixCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherOneNetflixCloneApp.swift; sourceTree = "<group>"; };
 		2DF4A0452BE245510046F4CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				2DF4A07E2BE27F310046F4CE /* FrameReader.swift */,
+				2DA2B7D72BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift */,
+				2DA2B7D92BE41A280035C81A /* LocationReader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -294,11 +300,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF4A0782BE273170046F4CE /* Icons.swift in Sources */,
+				2DA2B7D82BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift in Sources */,
 				2DF4A06C2BE24ADD0046F4CE /* HomeView.swift in Sources */,
 				2DF4A0842BE287A50046F4CE /* MovieCell.swift in Sources */,
 				2DF4A07A2BE274500046F4CE /* Layout.swift in Sources */,
 				2DF4A0672BE2484E0046F4CE /* Color+Hex.swift in Sources */,
 				2DF4A07C2BE275BC0046F4CE /* MainButtonStyle.swift in Sources */,
+				2DA2B7DA2BE41A280035C81A /* LocationReader.swift in Sources */,
 				2DF4A05B2BE246D60046F4CE /* ImageLoaderView.swift in Sources */,
 				2DF4A0732BE2641F0046F4CE /* HeroCell.swift in Sources */,
 				2DF4A07F2BE27F310046F4CE /* FrameReader.swift in Sources */,
