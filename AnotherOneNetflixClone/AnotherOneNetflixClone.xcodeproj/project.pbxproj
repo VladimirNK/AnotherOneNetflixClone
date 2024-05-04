@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D813DB22BE57619006499A8 /* MyListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D813DB12BE57619006499A8 /* MyListButton.swift */; };
+		2D813DB42BE57C87006499A8 /* RateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D813DB32BE57C87006499A8 /* RateButton.swift */; };
+		2D813DB62BE584FA006499A8 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D813DB52BE584FA006499A8 /* ShareButton.swift */; };
+		2D9DBB2D2BE55E90009B2F64 /* DetailsProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9DBB2C2BE55E90009B2F64 /* DetailsProductView.swift */; };
 		2DA2B7D82BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2B7D72BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift */; };
 		2DA2B7DA2BE41A280035C81A /* LocationReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2B7D92BE41A280035C81A /* LocationReader.swift */; };
+		2DA2B7DD2BE427CB0035C81A /* MoviewDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2B7DC2BE427CB0035C81A /* MoviewDetailsView.swift */; };
+		2DA2B7DF2BE4298B0035C81A /* DetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2B7DE2BE4298B0035C81A /* DetailsHeaderView.swift */; };
+		2DA2B7E32BE553BA0035C81A /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2B7E22BE553BA0035C81A /* CustomProgressBar.swift */; };
 		2DF4A0422BE245500046F4CE /* AnotherOneNetflixCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF4A0412BE245500046F4CE /* AnotherOneNetflixCloneApp.swift */; };
 		2DF4A0462BE245510046F4CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4A0452BE245510046F4CE /* Assets.xcassets */; };
 		2DF4A0492BE245510046F4CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4A0482BE245510046F4CE /* Preview Assets.xcassets */; };
@@ -34,8 +41,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D813DB12BE57619006499A8 /* MyListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListButton.swift; sourceTree = "<group>"; };
+		2D813DB32BE57C87006499A8 /* RateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateButton.swift; sourceTree = "<group>"; };
+		2D813DB52BE584FA006499A8 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
+		2D9DBB2C2BE55E90009B2F64 /* DetailsProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsProductView.swift; sourceTree = "<group>"; };
 		2DA2B7D72BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithOnScrollChanged.swift; sourceTree = "<group>"; };
 		2DA2B7D92BE41A280035C81A /* LocationReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationReader.swift; sourceTree = "<group>"; };
+		2DA2B7DC2BE427CB0035C81A /* MoviewDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewDetailsView.swift; sourceTree = "<group>"; };
+		2DA2B7DE2BE4298B0035C81A /* DetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsHeaderView.swift; sourceTree = "<group>"; };
+		2DA2B7E22BE553BA0035C81A /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
 		2DF4A03E2BE245500046F4CE /* AnotherOneNetflixClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnotherOneNetflixClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF4A0412BE245500046F4CE /* AnotherOneNetflixCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherOneNetflixCloneApp.swift; sourceTree = "<group>"; };
 		2DF4A0452BE245510046F4CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DA2B7DB2BE427AC0035C81A /* MoviewDetailsFeature */ = {
+			isa = PBXGroup;
+			children = (
+				2DA2B7DC2BE427CB0035C81A /* MoviewDetailsView.swift */,
+			);
+			path = MoviewDetailsFeature;
+			sourceTree = "<group>";
+		};
 		2DF4A0352BE245500046F4CE = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +148,7 @@
 		2DF4A05F2BE246F00046F4CE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2DA2B7DB2BE427AC0035C81A /* MoviewDetailsFeature */,
 				2DF4A06A2BE24A9F0046F4CE /* HomeFeature */,
 			);
 			path = Screens;
@@ -173,6 +196,11 @@
 				2DF4A0812BE287800046F4CE /* HeroCell */,
 				2DF4A0802BE287620046F4CE /* FilterCell */,
 				2DF4A0762BE272EF0046F4CE /* Buttons */,
+				2DA2B7DE2BE4298B0035C81A /* DetailsHeaderView.swift */,
+				2D813DB12BE57619006499A8 /* MyListButton.swift */,
+				2D813DB32BE57C87006499A8 /* RateButton.swift */,
+				2D813DB52BE584FA006499A8 /* ShareButton.swift */,
+				2D9DBB2C2BE55E90009B2F64 /* DetailsProductView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -192,6 +220,7 @@
 				2DF4A07E2BE27F310046F4CE /* FrameReader.swift */,
 				2DA2B7D72BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift */,
 				2DA2B7D92BE41A280035C81A /* LocationReader.swift */,
+				2DA2B7E22BE553BA0035C81A /* CustomProgressBar.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -299,8 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D813DB62BE584FA006499A8 /* ShareButton.swift in Sources */,
 				2DF4A0782BE273170046F4CE /* Icons.swift in Sources */,
+				2DA2B7DD2BE427CB0035C81A /* MoviewDetailsView.swift in Sources */,
 				2DA2B7D82BE419C80035C81A /* ScrollViewWithOnScrollChanged.swift in Sources */,
+				2DA2B7E32BE553BA0035C81A /* CustomProgressBar.swift in Sources */,
 				2DF4A06C2BE24ADD0046F4CE /* HomeView.swift in Sources */,
 				2DF4A0842BE287A50046F4CE /* MovieCell.swift in Sources */,
 				2DF4A07A2BE274500046F4CE /* Layout.swift in Sources */,
@@ -308,14 +340,18 @@
 				2DF4A07C2BE275BC0046F4CE /* MainButtonStyle.swift in Sources */,
 				2DA2B7DA2BE41A280035C81A /* LocationReader.swift in Sources */,
 				2DF4A05B2BE246D60046F4CE /* ImageLoaderView.swift in Sources */,
+				2D813DB42BE57C87006499A8 /* RateButton.swift in Sources */,
 				2DF4A0732BE2641F0046F4CE /* HeroCell.swift in Sources */,
 				2DF4A07F2BE27F310046F4CE /* FrameReader.swift in Sources */,
+				2D813DB22BE57619006499A8 /* MyListButton.swift in Sources */,
+				2D9DBB2D2BE55E90009B2F64 /* DetailsProductView.swift in Sources */,
 				2DF4A05C2BE246D60046F4CE /* Product.swift in Sources */,
 				2DF4A05A2BE246D60046F4CE /* DatabaseHelper.swift in Sources */,
 				2DF4A0422BE245500046F4CE /* AnotherOneNetflixCloneApp.swift in Sources */,
 				2DF4A06F2BE24F4C0046F4CE /* FilerCell.swift in Sources */,
 				2DF4A0712BE2522E0046F4CE /* FilterBarView.swift in Sources */,
 				2DF4A0692BE248DE0046F4CE /* AppColors.swift in Sources */,
+				2DA2B7DF2BE4298B0035C81A /* DetailsHeaderView.swift in Sources */,
 				2DF4A05D2BE246D60046F4CE /* Constants.swift in Sources */,
 				2DF4A0752BE26F820046F4CE /* MainButton.swift in Sources */,
 				2DF4A05E2BE246D60046F4CE /* User.swift in Sources */,
@@ -377,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -434,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -459,7 +495,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +524,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

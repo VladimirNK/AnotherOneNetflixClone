@@ -37,7 +37,7 @@ struct HomeView: View {
     }
     
     func getData() async {
-        guard productRows .isEmpty else { return }
+        guard productRows.isEmpty else { return }
         do {
             currentUser = try await DatabaseHelper().getUsers().first
             let products = try await DatabaseHelper().getProducts()
