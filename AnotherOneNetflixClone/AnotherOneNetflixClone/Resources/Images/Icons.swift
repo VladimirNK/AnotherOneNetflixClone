@@ -17,4 +17,6 @@ extension String {
     static let thumbsDownIconString = "hand.thumbsdown"
     static let loveIconString = "bolt.heart"
     static let shareIconString = "paperplane"
+    static let tvBadgeWifiIconString = "tv.badge.wifi"
+    static let xmakIconString = "xmark"
 }

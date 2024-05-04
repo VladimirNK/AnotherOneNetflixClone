@@ -1,5 +1,5 @@
 {
-  "originHash" : "cf2ac1e83217ac0b2ead6c9162d5cd43db40aefe8e94fb1dc4e5b8e7ca97c576",
+  "originHash" : "580b001fc87cc01583dc4039e118122f736f3f836f629aa015b10483bcd30af6",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "9dc9cbe4bc45c65164fa653a563d8d8db61b09bb",
         "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "devicekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/devicekit/DeviceKit.git",
+      "state" : {
+        "revision" : "97acf830fd0e0b719126e9450a51c95a91f66858",
+        "version" : "5.2.3"
       }
     },
     {
