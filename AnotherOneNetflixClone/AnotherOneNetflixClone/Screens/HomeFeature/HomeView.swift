@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     
+    //MARK: - Properties
+    
     @State private var filters: [FilterModel] = FilterModel.mock
     @State private var selectedFilter: FilterModel?
     @State private var fullHeaderSize: CGSize = .zero
@@ -17,17 +19,15 @@ struct HomeView: View {
     
     @State private var currentUser: User?
     @State private var productRows: [ProductRow] = []
+   
+    //MARK: - Body
     
     var body: some View {
         ZStack(alignment: .top) {
             Color.appBlack.ignoresSafeArea()
-            
             gradientLayer
-            
             scrollViewLayer
-            
             fullHeaderWithFilters
-            
         }
         .foregroundStyle(.appWhite)
         .task {
@@ -59,31 +59,10 @@ struct HomeView: View {
 //MARK: - Subviews
 
 extension HomeView {
-    
-    private var header: some View {
-        HStack(spacing: 0) {
-            Text("For You")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.title)
-            
-            HStack(spacing: 16) {
-                Image(systemName: "tv.badge.wifi")
-                    .onTapGesture {
-                        
-                    }
-                
-                Image(systemName: "magnifyingglass")
-                    .onTapGesture {
-                        
-                    }
-            }
-            .font(.title2 )
-        }
-    }
-    
+        
     private func heroCell(product: Product) -> some View {
         HeroCell(
-            imageName: product.firstImage ,
+            imageName: product.firstImage,
             isNetflixFilm: true,
             title: product.title,
             categories: [product.category.capitalized, product.brand],
@@ -97,16 +76,16 @@ extension HomeView {
                 
             }
         )
-        .padding(24)
+        .padding(Space.xl)
     }
     
     private var categoryRows: some View {
-        LazyVStack(spacing: 16) {
+        LazyVStack(spacing: Space.m) {
             ForEach(Array(productRows.enumerated()), id: \.offset) { (rowIndex, row) in
-                VStack(alignment: .leading, spacing: 6) {
+                VStack(alignment: .leading, spacing: Space.xs) {
                     Text(row.title)
                         .font(.headline)
-                        .padding(.horizontal, 16)
+                        .padding(.horizontal, Space.m)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack {
@@ -119,54 +98,68 @@ extension HomeView {
                                 )
                             }
                         }
-                        .padding(.horizontal, 16)
+                        .padding(.horizontal, Space.m)
                     }
-                    
                 }
             }
         }
     }
     
     private var fullHeaderWithFilters: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: .zero) {
             header
-                .padding(.horizontal, 16)
-            
-            if scrollViewOffset > -20 {
-                FilterBarView(
-                    filters: filters,
-                    selectedFilter: selectedFilter) { newFiler in
-                        selectedFilter = newFiler
-                    } onXMarkPressed: {
-                        selectedFilter = nil
-                    }
-                    .padding(.top, 16)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-            }
-            
-             
+            filterBar
         }
-        .padding(.bottom, 8)
-        .background(
-            ZStack {
-                if scrollViewOffset < -70 {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .background(.ultraThinMaterial)
-                        .brightness(-0.2)
-                        .ignoresSafeArea()
-                }
-            }
-        )
+        .padding(.bottom, Space.xs)
+        .background(blurHeaderBackground)
         .animation(.smooth, value: scrollViewOffset)
         .readingFrame { frame in
             if fullHeaderSize == .zero {
                 fullHeaderSize = frame.size
             }
-            
         }
     }
     
+    private var header: some View {
+        AppHeader(title: "For Volodymyr") { buttonAction in
+            switch buttonAction {
+            case .shareToDevice:
+                print("Tap on shareToDevice")
+            case .search:
+                print("Tap on search")
+            case .showMenu:
+                print("Tap on show menu")
+            }
+        }
+        .padding(.horizontal, Space.m)
+    }
+    
+    @ViewBuilder
+    private var filterBar: some View {
+        if scrollViewOffset > -20 {
+            FilterBarView(
+                filters: filters,
+                selectedFilter: selectedFilter) { newFiler in
+                    selectedFilter = newFiler
+                } onXMarkPressed: {
+                    selectedFilter = nil
+                }
+                .padding(.top, Space.m)
+                .transition(.move(edge: .top).combined(with: .opacity))
+        }
+    }
+    
+    private var blurHeaderBackground: some View {
+        ZStack {
+            if scrollViewOffset < -70 {
+                Rectangle()
+                    .fill(Color.clear)
+                    .background(.ultraThinMaterial)
+                    .brightness(-0.2)
+                    .ignoresSafeArea()
+            }
+        }
+    }
     
     private var scrollViewLayer: some View {
         ScrollViewWithOnScrollChanged(

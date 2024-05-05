@@ -9,35 +9,49 @@ import SwiftUI
 
 struct MyListButton: View {
     
+    //MARK: - Properties
+    
     var isMyList: Bool = false
     var onButtonPressed: (() -> Void)?
     
+    //MARK: - Body
     
     var body: some View {
-        VStack(spacing: 8) {
-            ZStack {
-                Image(systemName: .checkmarkIconString)
-                    .opacity(isMyList ? 1 : 0)
-                    .rotationEffect(Angle(degrees: isMyList ? 0 : 180))
-                Image(systemName: .plusIconString)
-                    .opacity(isMyList ? 0 : 1)
-                    .rotationEffect(Angle(degrees: isMyList ? -180 : 0))
-            }
-            .font(.title)
+        VStack(spacing: Space.xs) {
+            buttonIcon
             
             Text("My List")
-                .font(.caption)
+                .typography(.caption)
                 .foregroundStyle(.appLightGray)
         }
         .foregroundStyle(.appWhite)
-        .padding(8)
-        .background(Color.black.opacity(0.001))
+        .padding(Space.xs)
+        .background(.appTransparent)
         .animation(.bouncy, value: isMyList)
         .onTapGesture {
             onButtonPressed?()
         }
     }
 }
+
+//MARK: - Subviews
+
+extension MyListButton {
+    
+    private var buttonIcon: some View {
+        ZStack {
+            Image(systemName: .checkmarkIconString)
+                .opacity(isMyList ? 1 : 0)
+                .rotationEffect(Angle(degrees: isMyList ? 0 : 180))
+            Image(systemName: .plusIconString)
+                .opacity(isMyList ? 0 : 1)
+                .rotationEffect(Angle(degrees: isMyList ? -180 : 0))
+        }
+        .typography(.title)
+    }
+}
+
+//MARK: - Preview
 
 fileprivate struct MyListButtonPreview: View {
     
@@ -55,5 +69,4 @@ fileprivate struct MyListButtonPreview: View {
         Color.black.ignoresSafeArea()
         MyListButtonPreview()
     }
-    
 }

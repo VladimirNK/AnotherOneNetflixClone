@@ -9,10 +9,14 @@ import SwiftUI
 
 struct MainButton: View {
     
+    //MARK: - Properties
+    
     var text: String
     var buttonType: MainButtonType
     var iconString: String?
     var onTap: (() -> Void)?
+    
+    //MARK: - Body
     
     var body: some View {
         Button(
@@ -25,31 +29,31 @@ struct MainButton: View {
                     
                     Text(text)
                         .fontWeight(.medium)
-                        .font(.callout)
+                        .typography(.callout)
                         .lineLimit(1)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
+                .padding(.vertical, Space.xs)
+                .padding(.horizontal, Space.m)
                 .foregroundStyle(buttonType.textColor)
                 .background(buttonType.backgroundColor)
-                .cornerRadius(4)
+                .cornerRadius(CornerRadius.xs)
             }
         )
         .buttonStyle(MainButtonStyleViewModifier())
     }
 }
 
+//MARK: - Preview
+
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
         
-        VStack(spacing: 20) {
+        VStack(spacing: Space.m) {
             MainButton(text: "Play", buttonType: .primary, iconString: .playIconString)
             MainButton(text: "My List", buttonType: .secondary, iconString: .plusIconString)
         }
-        .padding(16)
-        
+        .padding(Space.m)
     }
-    
 }

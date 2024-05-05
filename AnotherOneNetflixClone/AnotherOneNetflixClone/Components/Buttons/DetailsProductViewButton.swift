@@ -9,8 +9,12 @@ import SwiftUI
 
 struct DetailsProductViewButton: View {
     
+    //MARK: - Properties
+    
     var iconString: String
     var action: (() -> Void)?
+    
+    //MARK: - Body
     
     var body: some View {
         Circle()
@@ -26,6 +30,8 @@ struct DetailsProductViewButton: View {
             }
     }
 }
+
+//MARK: - Preview
 
 #Preview {
     DetailsProductViewButton(iconString: .tvBadgeWifiIconString)

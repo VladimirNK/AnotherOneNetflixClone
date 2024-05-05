@@ -22,53 +22,72 @@ struct FilterModel: Hashable, Equatable  {
 
 struct FilterBarView: View {
     
-    var filters: [FilterModel] = FilterModel.mock
+    //MARK: - Properties
+    
+    var filters: [FilterModel]
     var selectedFilter: FilterModel?
-    var onFilterPressed: ((FilterModel ) -> Void)?
+    var onFilterPressed: ((FilterModel) -> Void)?
     var onXMarkPressed: (() -> Void)?
+    
+    //MARK: - Body
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                if selectedFilter != nil {
-                    Image(systemName: "xmark")
-                        .padding(8)
-                        .background(
-                            Circle()
-                                .stroke(lineWidth: 1)
-                        )
-                        .foregroundStyle(.appLightGray)
-                        .background(Color.black.opacity(0.001))
-                        .onTapGesture {
-                            onXMarkPressed?()
-                        }
-                        .transition(AnyTransition.move(edge: .leading))
-                        .padding(.leading, 16)
-                }
-                
-                
-                ForEach(filters, id: \.self) { filter in
-                    if selectedFilter == nil || selectedFilter == filter {
-                        FilerCell(
-                            title: filter.title,
-                            isDropdown: filter.isDropdown,
-                            isSelected: selectedFilter == filter
-                        )
-                        .background(Color.black.opacity(0.001))
-                        .onTapGesture {
-                            onFilterPressed?(filter)
-                        }
-                        .padding(.leading, ((selectedFilter == nil) && filter == filters.first) ? 16 : 0)
-                    }
-                    
-                }
+                closeButton
+                categoryButtonsGroup
             }
-            .padding(.vertical, 4)
+            .padding(.vertical, Space.xs2)
         }
         .animation(.bouncy, value: selectedFilter)
-        
     }
 }
+
+//MARK: - Subviews
+
+extension FilterBarView {
+    
+    @ViewBuilder
+    private var closeButton: some View {
+        if selectedFilter != nil {
+            Image(systemName: .xmakIconString)
+                .padding(Space.xs)
+                .background(
+                    Circle()
+                        .stroke(lineWidth: Constants.FilterBarView.buttonBorderWidth)
+                )
+                .foregroundStyle(.appLightGray)
+                .background(.appTransparent)
+                .onTapGesture {
+                    onXMarkPressed?()
+                }
+                .transition(AnyTransition.move(edge: .leading))
+                .padding(.leading, Space.m)
+        }
+    }
+    
+    private var categoryButtonsGroup: some View {
+        ForEach(filters, id: \.self) { filter in
+            if selectedFilter == nil || selectedFilter == filter {
+                FilerCell(
+                    title: filter.title,
+                    isDropdown: filter.isDropdown,
+                    isSelected: selectedFilter == filter
+                )
+                .background(.appTransparent)
+                .onTapGesture {
+                    onFilterPressed?(filter)
+                }
+                .padding(
+                    .leading,
+                    ((selectedFilter == nil) && filter == filters.first) ? Space.m : 0
+                )
+            }
+        }
+    }
+}
+
+//MARK: - Preview
 
 fileprivate struct FilterBarViewPreview: View {
     
@@ -83,14 +102,13 @@ fileprivate struct FilterBarViewPreview: View {
             } onXMarkPressed: {
                 selectedFilter = nil
             }
-
     }
 }
 
 #Preview {
     ZStack {
         Color.appBlack.ignoresSafeArea()
-        FilterBarView()
+        FilterBarViewPreview()
     }
     
 }

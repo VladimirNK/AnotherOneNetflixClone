@@ -9,14 +9,18 @@ import Foundation
 
 extension String {
     
-    static let playIconString = "play.fill"
-    static let plusIconString = "plus"
-    static let downloadIconString = "arrow.down.to.line.alt"
-    static let checkmarkIconString = "checkmark"
-    static let thumbsUpIconString = "hand.thumbsup"
-    static let thumbsDownIconString = "hand.thumbsdown"
-    static let loveIconString = "bolt.heart"
-    static let shareIconString = "paperplane"
-    static let tvBadgeWifiIconString = "tv.badge.wifi"
-    static let xmakIconString = "xmark"
+    public static let playIconString = "play.fill"
+    public static let plusIconString = "plus"
+    public static let downloadIconString = "arrow.down.to.line.alt"
+    public static let checkmarkIconString = "checkmark"
+    public static let thumbsUpIconString = "hand.thumbsup"
+    public static let thumbsDownIconString = "hand.thumbsdown"
+    public static let loveIconString = "bolt.heart"
+    public static let shareIconString = "paperplane"
+    public static let tvBadgeWifiIconString = "tv.badge.wifi"
+    public static let xmakIconString = "xmark"
+    public static let captionBubbleIconString = "captions.bubble"
+    public static let chevronDownIconString = "chevron.down"
+    public static let searchIconString = "magnifyingglass"
+    public static let menuIconString = "line.3.horizontal.decrease"
 }

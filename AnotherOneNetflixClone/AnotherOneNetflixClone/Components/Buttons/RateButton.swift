@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum RateOption: String, CaseIterable {
-     case dislike, like, love
+    case dislike, like, love
     
     var title: String {
         switch self {
@@ -35,61 +35,74 @@ enum RateOption: String, CaseIterable {
 
 struct RateButton: View {
     
+    //MARK: - Properties
+    
     @State private var showPopover: Bool = false
     var onRatingSelected: ((RateOption) -> Void)?
     
+    //MARK: - Body
+    
     var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: .thumbsUpIconString )
-                .font(.title)
+        VStack(spacing: Space.xs) {
+            Image(systemName: .thumbsUpIconString)
+                .typography(.title)
             
             Text("Rate")
-                .font(.caption)
+                .typography(.caption)
                 .foregroundStyle(.appLightGray)
         }
         .foregroundStyle(.appWhite)
-        .padding(8)
-        .background(Color.black.opacity(0.001))
+        .padding(Space.xs)
+        .background(.appTransparent)
         .onTapGesture {
             showPopover.toggle()
         }
         .popover(isPresented: $showPopover) {
             ZStack {
                 Color.appDarkGray.ignoresSafeArea()
-                
-                HStack(spacing: 12) {
-                    ForEach(RateOption.allCases, id: \.self) {
-                        rateButton(option: $0)
-                    }
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
+                popoverContent
             }
             .presentationCompactAdaptation(.popover)
         }
     }
+}
+
+//MARK: - Subviews
+
+extension RateButton {
     
     private func rateButton(option: RateOption) -> some View {
-        VStack(spacing: 8) {
+        VStack(spacing: Space.xs) {
             Image(systemName: option.iconName)
-                .font(.title2)
+                .typography(.title2)
             Text(option.title )
-                .font(.caption)
+                .typography(.caption)
         }
         .foregroundStyle(.appWhite)
-        .padding(4)
-        .background(Color.black.opacity(0.001))
+        .padding(Space.xs2)
+        .background(.appTransparent)
         .onTapGesture {
             showPopover = false
-            onRatingSelected?(option )
+            onRatingSelected?(option)
         }
     }
+    
+    private var popoverContent: some View {
+        HStack(spacing: Space.s) {
+            ForEach(RateOption.allCases, id: \.self) {
+                rateButton(option: $0)
+            }
+        }
+        .padding(.horizontal, Space.m)
+        .padding(.vertical, Space.xs)
+    }
 }
+
+//MARK: - Preview
 
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
         RateButton()
     }
-    
 }

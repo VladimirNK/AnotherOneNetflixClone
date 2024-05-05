@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-/// ViewModifier for buttons
 struct MainButtonStyleViewModifier: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
@@ -16,7 +15,6 @@ struct MainButtonStyleViewModifier: ButtonStyle {
     }
 }
 
-/// Button types
 enum MainButtonType {
     case primary
     case secondary

@@ -9,54 +9,32 @@ import SwiftUI
 
 struct MovieCell: View {
     
+    //MARK: - Properties
+    
     var width: CGFloat = 90
     var height: CGFloat = 140
     var imageName: String = Constants.randomImage
-    var title: String? = "Movie Title"
-    var isRecentryAdded: Bool = true
+    var title: String?
+    var isRecentryAdded: Bool?
     var topTenRanking: Int?
     
+    //MARK: - Body
+    
     var body: some View {
-        HStack(alignment: .bottom, spacing: -8) {
-            if let topTenRanking {
-                Text("\(topTenRanking)")
-                    .font(.system(size: 100, weight: .medium, design: .serif))
-                    .offset(y: 20)
-            }
-            
+        HStack(alignment: .bottom, spacing: -Space.xs) {
+            rankNumber
             
             ZStack(alignment: .bottom) {
                 ImageLoaderView(urlString: imageName)
                 
                 VStack(spacing: .zero) {
-                    if let title, let firstWord = title.components(separatedBy: " ").first {
-                        Text(firstWord )
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .lineLimit(1)
-                         
-                    }
-                    
-                    Text("Recently Added")
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .padding(.horizontal, 4)
-                        .padding(.vertical, 2)
-                        .padding(.bottom, 2)
-                        .frame(maxWidth: .infinity)
-                        .background(.appRed)
-                        .cornerRadius(2)
-                        .offset(y: 2)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.1)
-                        .padding(.horizontal, 8)
-                        .opacity(isRecentryAdded ? 1 : 0 )
-                        
+                    movieTitle
+                    recentlyAdded
                 }
-                .padding(.top, 6)
-                .background(LinearGradient.heroCellGradient )
+                .padding(.top, Space.xs)
+                .background(LinearGradient.heroCellGradient)
             }
-            .cornerRadius(4)
+            .cornerRadius(CornerRadius.xs)
             .frame(width: width, height: height)
         
         }
@@ -64,15 +42,59 @@ struct MovieCell: View {
     }
 }
 
+//MARK: - Subviews
+
+extension MovieCell {
+    
+    @ViewBuilder
+    private var rankNumber: some View {
+        if let topTenRanking {
+            Text("\(topTenRanking)")
+                .font(Constants.MovieCell.topRankFont)
+                .offset(y: Constants.MovieCell.fontOffset)
+        }
+    }
+    
+    @ViewBuilder
+    private var movieTitle: some View {
+        if let title, let firstWord = title.components(separatedBy: " ").first {
+            Text(firstWord)
+                .typography(.subheadline)
+                .lineLimit(1)
+        }
+    }
+    
+    @ViewBuilder
+    private var recentlyAdded: some View {
+        if let isRecentryAdded {
+            Text("Recently Added")
+                .typography(.caption)
+                .padding(.horizontal, Space.xs2)
+                .padding(.vertical, Space.xs3)
+                .padding(.bottom, Space.xs3)
+                .frame(maxWidth: .infinity)
+                .background(.appRed)
+                .cornerRadius(CornerRadius.xs)
+                .offset(y: Space.xs3)
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+                .padding(.horizontal, Space.xs)
+                .opacity(isRecentryAdded ? 1 : 0 )
+        }
+        
+    }
+}
+
+//MARK: - Preview
+
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
         
-        VStack {
-            MovieCell(isRecentryAdded: true)
-            MovieCell(isRecentryAdded: false)
-            MovieCell(isRecentryAdded: true, topTenRanking: 2)
-            MovieCell(isRecentryAdded: false, topTenRanking: 10)
+        VStack(alignment: .trailing, spacing: Space.m) {
+            MovieCell(title: "Movie Title", isRecentryAdded: true)
+            MovieCell(title: "Movie Title")
+            MovieCell(title: "Movie Title", isRecentryAdded: true, topTenRanking: 2)
         }
     }
 }

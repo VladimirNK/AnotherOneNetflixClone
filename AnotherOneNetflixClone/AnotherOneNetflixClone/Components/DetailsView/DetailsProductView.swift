@@ -9,118 +9,130 @@ import SwiftUI
 
 struct DetailsProductView: View {
     
-    var title: String = "Movie Title"
-    var isNew: Bool = true
-    var yearReleased: String? = "2024"
-    var seasonsCount: Int? = 2
-    var hasClosedCaptions: Bool = true
-    var isTopTen: Int? = 6
-    var descriptionText: String? = "This is the description of the title that is selected and it should go multiple lines."
-    var castText: String? = "Cast: Nick, Volodymyr, Kseniya"
+    //MARK: - Properties
+    
+    var title: String
+    var isNew: Bool
+    var yearReleased: String?
+    var seasonsCount: Int?
+    var hasClosedCaptions: Bool
+    var isTopTen: Int?
+    var descriptionText: String?
+    var castText: String?
     var onPlayPressed: (() -> Void)?
     var onDownloadPressed: (() -> Void)?
     
+    //MARK: - Body
     
     var body: some View {
         VStack(alignment: .leading) {
-            
-            // Title
             Text(title)
-                .font(.headline)
+                .typography(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            // New
-            HStack(spacing: 8) {
-                if isNew {
-                    Text("New")
-                        .foregroundStyle(.green)
-                }
-                
-                if let yearReleased {
-                    Text(yearReleased)
-                }
-                
-                
-                if let seasonsCount {
-                    Text("\(seasonsCount) Seasons ")
-                }
-                
-                if hasClosedCaptions {
-                    Image(systemName: "captions.bubble")
-                }
-            }
-            .foregroundStyle(.appLightGray)
-            
-            // Top 10
-            if let isTopTen {
-                HStack(spacing: 8) {
-                    topTenIcon
-                    
-                    Text("#\(isTopTen) in TV Shows today")
-                        .font(.headline )
-                }
-            }
-            
-            //Buttons
-            VStack(spacing: 8) {
-                
-                MainButton(
-                    text: "Play",
-                    buttonType: .primary,
-                    iconString: .playIconString,
-                    onTap: { onPlayPressed?() }
-                )
-                
-                MainButton(
-                    text: "Download",
-                    buttonType: .secondary,
-                    iconString: .downloadIconString,
-                    onTap: { onDownloadPressed?() }
-                )
-            }
+            subtitleInfo
+            topTenRow
+            buttonsGroup
             
             Group {
-                //Description
-                if let descriptionText {
-                    Text(descriptionText)
-                }
-                
-                //Cast
-                if let castText {
-                    Text(castText)
-                        .foregroundStyle(.appLightGray )
-                }
+                movieDescription
+                movieCast
             }
-            .font(.callout)
+            .typography(.callout)
             .frame(maxWidth: .infinity, alignment: .leading)
             .multilineTextAlignment(.leading)
         }
         .foregroundStyle(.appWhite)
     }
+}
+
+//MARK: - Subviews
+
+extension DetailsProductView {
     
-    private var topTenIcon: some View {
-        Rectangle()
-            .fill(.appRed)
-            .frame(width: 28, height: 28)
-            .overlay(
-                VStack(spacing: -4 ) {
-                    Text("TOP")
-                        .fontWeight(.bold )
-                        .font(.system(size: 8))
-                    Text("10")
-                        .fontWeight(.bold)
-                        .font(.system(size: 16))
-                }
-                    .offset(y: 1)
-            )
+    private var subtitleInfo: some View {
+        HStack(spacing: Space.xs) {
+            if isNew {
+                Text("New")
+                    .foregroundStyle(.green)
+            }
+            
+            if let yearReleased {
+                Text(yearReleased)
+            }
+            
+            if let seasonsCount {
+                Text("\(seasonsCount) Seasons")
+            }
+            
+            if hasClosedCaptions {
+                Image(systemName: .captionBubbleIconString)
+            }
+        }
+        .foregroundStyle(.appLightGray)
     }
     
+    @ViewBuilder
+    private var topTenRow: some View {
+        if let isTopTen {
+            HStack(spacing: Space.xs) {
+                TopTenIcon()
+                
+                Text("#\(isTopTen) in TV Shows today")
+                    .typography(.headline)
+            }
+        }
+    }
+    
+    private var buttonsGroup: some View {
+        VStack(spacing: Space.xs) {
+            MainButton(
+                text: "Play",
+                buttonType: .primary,
+                iconString: .playIconString,
+                onTap: { onPlayPressed?() }
+            )
+            
+            MainButton(
+                text: "Download",
+                buttonType: .secondary,
+                iconString: .downloadIconString,
+                onTap: { onDownloadPressed?() }
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private var movieDescription: some View {
+        if let descriptionText {
+            Text(descriptionText)
+        }
+    }
+    
+    @ViewBuilder
+    private var movieCast: some View {
+        if let castText {
+            Text(castText)
+                .foregroundStyle(.appLightGray)
+        }
+    }
 }
+
+//MARK: - Preview
 
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-        DetailsProductView()
+        DetailsProductView(
+            title: "Movie Title",
+            isNew: true,
+            yearReleased: "2024",
+            seasonsCount: 4,
+            hasClosedCaptions: true,
+            isTopTen: 7,
+            descriptionText: "This is the description of the title that is selected and it should go multiple lines.",
+            castText: "Cast: Tom Cruise, Bart Simpson, Kurt Cobain"
+        )
+        .padding(.horizontal, Space.m)
     }
-    
 }

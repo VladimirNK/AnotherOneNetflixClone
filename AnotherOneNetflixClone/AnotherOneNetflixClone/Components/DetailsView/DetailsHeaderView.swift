@@ -21,9 +21,7 @@ struct DetailsHeaderView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ImageLoaderView(urlString: imageName)
-            
             progressBar
-            
             buttonsGroup
         }
         .aspectRatio(
