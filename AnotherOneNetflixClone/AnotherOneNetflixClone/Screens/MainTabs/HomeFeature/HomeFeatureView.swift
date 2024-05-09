@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct HomeView: View {
+struct HomeFeatureView: View {
     
     //MARK: - Properties
+    
+    let store: StoreOf<HomeFeatureStore>
     
     @State private var filters: [FilterModel] = FilterModel.mock
     @State private var selectedFilter: FilterModel?
@@ -23,17 +26,19 @@ struct HomeView: View {
     //MARK: - Body
     
     var body: some View {
-        ZStack(alignment: .top) {
-            Color.appBlack.ignoresSafeArea()
-            gradientLayer
-            scrollViewLayer
-            fullHeaderWithFilters
-        }
-        .foregroundStyle(.appWhite)
-        .task {
-            await getData()
-        }
+        WithPerceptionTracking {
+            ZStack(alignment: .top) {
+                Color.appBlack.ignoresSafeArea()
+                gradientLayer
+                scrollViewLayer
+                fullHeaderWithFilters
+            }
+            .foregroundStyle(.appWhite)
+            .task {
+                await getData()
+            }
         .navigationBarHidden(true)
+        }
     }
     
     func getData() async {
@@ -58,7 +63,7 @@ struct HomeView: View {
 
 //MARK: - Subviews
 
-extension HomeView {
+extension HomeFeatureView {
         
     private func heroCell(product: Product) -> some View {
         HeroCell(
@@ -212,5 +217,7 @@ extension HomeView {
 }
 
 #Preview {
-    HomeView()
+    HomeFeatureView(store: Store(initialState: HomeFeatureStore.State(), reducer: {
+        HomeFeatureStore()
+    }))
 }

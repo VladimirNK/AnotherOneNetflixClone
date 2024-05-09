@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct AnotherOneNetflixCloneApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            AppFeatureView(store: Store(initialState: AppFeatureStore.State(selectedTab: .home), reducer: {
+                AppFeatureStore()
+            }))
+           
         }
     }
 }
